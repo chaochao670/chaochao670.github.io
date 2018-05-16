@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础知识STC 89C 52RC 40C-PDIP52的2是表示内存大小，51为1X4K=4K的内存52为2X4K=8K 40表示支持最大的晶振为40MKeil C51是51系列兼容单片机C语言软件开发系统SDC-ISP 串口下载程序，选择单片机型号，选择COM端口，先点击下载，再打开单片机(冷启动)发光二极管 点亮的电流约为 电流3ma ，压降为1.7V，据此计算串联的电阻(一般串联1K欧电阻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单片机学习笔记">
+<meta property="og:url" content="https://chaochao670.github.io/2018/05/16/技术_单片机学习笔记/index.html">
+<meta property="og:site_name" content="超人的hexo小站">
+<meta property="og:description" content="基础知识STC 89C 52RC 40C-PDIP52的2是表示内存大小，51为1X4K=4K的内存52为2X4K=8K 40表示支持最大的晶振为40MKeil C51是51系列兼容单片机C语言软件开发系统SDC-ISP 串口下载程序，选择单片机型号，选择COM端口，先点击下载，再打开单片机(冷启动)发光二极管 点亮的电流约为 电流3ma ，压降为1.7V，据此计算串联的电阻(一般串联1K欧电阻">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-16T12:24:36.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单片机学习笔记">
+<meta name="twitter:description" content="基础知识STC 89C 52RC 40C-PDIP52的2是表示内存大小，51为1X4K=4K的内存52为2X4K=8K 40表示支持最大的晶振为40MKeil C51是51系列兼容单片机C语言软件开发系统SDC-ISP 串口下载程序，选择单片机型号，选择COM端口，先点击下载，再打开单片机(冷启动)发光二极管 点亮的电流约为 电流3ma ，压降为1.7V，据此计算串联的电阻(一般串联1K欧电阻">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chaochao670.github.io/2018/05/16/技术_单片机学习笔记/"/>
+
+
+
+
+
+  <title>单片机学习笔记 | 超人的hexo小站</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">超人的hexo小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-相册">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-目录">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chaochao670.github.io/2018/05/16/技术_单片机学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘继超">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超人的hexo小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">单片机学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:24:36+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>基础知识<br>STC 89C 52RC 40C-PDIP<br>52的2是表示内存大小，51为1X4K=4K的内存52为2X4K=8K 40表示支持最大的晶振为40M<br>Keil C51是51系列兼容单片机C语言软件开发系统<br>SDC-ISP 串口下载程序，选择单片机型号，选择COM端口，先点击下载，再打开单片机(冷启动)<br>发光二极管 点亮的电流约为 电流3ma ，压降为1.7V，据此计算串联的电阻(一般串联1K欧电阻)<br>电阻分类(上拉电阻，下拉电阻，限流电阻)<br>开关电源 电流过大断开 电流小自动打开(usb供电即是)<br>要停止调试，先按单片机上的复位按钮，再停止调试(51单片机)<br>时钟周期(振荡周期),,状态周期(是时钟周期的两倍)，机器周期(一个机器周期有6个状态周期，完成一个独立的操作，为12个时钟周期)，指令周期(由一个或几个机器周期完成一条指令).<br>C语言编程中会屏蔽这些周期不用考虑，可用keil编译器设置晶振软件模拟有运行时间，软件仿延迟时间，更精确的延时需要有定时器<br>继电器从电源到地要反向接一个二极管，继电器断开时电磁感应会产生一个反向的电压，该二极管允许反向电压的流过，不至于下面的高电压击坏某些器件如三极管。<br>引脚功能的复用，由寄存器的值控制何时使用第一个，何时使用第二个。<br>计数器 引脚符号为T0 T1,可以计数来了多少个方波，如果是正弦波可以用比较器变成方波然后输入计数器引脚。<br>复位引脚外接的电容作用为上电自动复位，上电电容充电，复位引脚拥有电压就复位，充满电后放电。<br>地址可以被8整除的可以直接进行位操作。<br>时钟源的晶振，11.0592MHZ配30P的电容，6M晶振配20P电容。<br>内部有上接电阻的准双向I/O口，要写的时候先向其写个1，作输入口使用时，要先向该口写1(要准备一下才能输入用)<br>外部上拉电阻的原因是因为单片机的输出电流太小，无法带动二极管等发亮(一般P0口内部没有上拉电阻)，上拉电阻(一般选用10k)接电源可以加大负载电流。<br>每个char型变量会占用随机存储器RAM，unsigned char code c1;//加上code变量会存入ROM(程序区)，相应如果写data是写入RAM(代码区)的意思.<br>中断过程: 中断发生-&gt;中断响应(停下手中A活)-&gt;中断服务(处理事件B)-&gt;中断返回(继续处理A)<br>    优点是分时处理多个I/O中断，不同优先级可产生嵌套中断。<br>中断(电平触发和边沿触发)<br>    EA=1;//开总中断  EX0=1;//允许0号中断<br>    中断函数定义(不需要声明) void exter0 () interrupt 0 //0表示第0号中断,后面添加using 1表示使用第几组寄存器<br>    {//计数器溢出变为0，程序重新装一次值<br>    }<br>定时器<br>    软件定时:delay 或者a–等，降低了CPU利用率<br>    时基电路定时：外接必要的器件，定时值和范围不由软件控制<br>    TMOD是定时器工作方式寄存器，确定工作方式和功能，计算初值并写入TL0和TH0</p>
+<pre><code>    Gate是门控位，0时TR0或TR1置1即开始计数；1时TR0或TR1为1而且外部中断也为高时才开始计数(多了一个条件)
+    C/T是：定时计数模式选择，T(0)是定时，C(1)是计数
+    M0M1指定四种工作方式，分别是 13位、16位 定时/计数器，8位自动重装和两个独立的计数器
+    计算方法:要获得50ms的定时，16位寄存器用(65536-50000)/256得高八位的计数初值，(65536-50000)%256得低八位初值
+    从此16位初始值计50000nm即是50ms的定时器
+TCON是控制寄存器，控制T0,T1的启动和停止，(TR0和TR1复位)设置溢出标志，中断方式时，对IE赋值开放中断
+计数脉冲来源:1.来自系统时钟12分频后送来(此时作为定时器)，2.T0或T1引脚输入的外部脉冲源(此时作为计数器)，计数到达时计数器的溢出会使TCON的TF0或TF1置1，发出中断请求
+</code></pre><p>A/D转换<br>    A/D转换需要时间，不同data sheet上面标明了转换需要的最小时间，18f452转换需要的最小时间是Tad&gt;1.6us,<br>    根据单片机频率设置时钟转换频率，使时钟转换频率足够慢，能够正确完成转换。如以2Tosc作为AD转换时钟周期，<br>    当单片机主频为1.25MHZ或更低时，可以正常完成转换。<br>    A/D转换配置 C/R模拟输入通道编号/A/D转换通道编号 1/0表示1号模拟输入即AN0<br>    右边的0表示用的标准电压作参考电压，用一个外部输入作为参考电压则为1，两个则为2<br>PWM<br>    如在正弦波中正半轴才能正常工作的机器，冲量相等的脉冲加在有惯性的环节上其效果基本相同<br>    平均输出电压决定了电机的转速，其工作的平均电压为Ua=(Ton/T)*U=pU( p是密度的rou,表示占空比)<br>    调节输出电压平均值Ua，可以调Ton—PWM(脉冲宽度高度)，可调T-脉冲频率调制(PFM)<br>振荡器RC外部电阻/电容振荡，OSC2被配置为RA6,使用IO引脚即为使用内部晶振提供时钟频率，可以节省IO引脚,否则IO引脚必须作为外部晶振的输入</p>
+<h2 id="18f452，pwm周期-pr2-1-4ToscTmr2预分频值，data-sheet给出的占空比-ccpr1-ccp1con-lt-5-4-gt-Tosc-Tmr2预分频值，是正脉冲的时间，正确的占空比是个比值，由上公式算出ccpr1l-pr2接近于正确占空比。"><a href="#18f452，pwm周期-pr2-1-4ToscTmr2预分频值，data-sheet给出的占空比-ccpr1-ccp1con-lt-5-4-gt-Tosc-Tmr2预分频值，是正脉冲的时间，正确的占空比是个比值，由上公式算出ccpr1l-pr2接近于正确占空比。" class="headerlink" title="18f452，pwm周期=(pr2+1)4ToscTmr2预分频值，data sheet给出的占空比=(ccpr1:ccp1con&lt;5:4&gt;)Tosc*Tmr2预分频值，是正脉冲的时间，正确的占空比是个比值，由上公式算出ccpr1l/pr2接近于正确占空比。"></a>18f452，pwm周期=(pr2+1)<em>4</em>Tosc<em>Tmr2预分频值，data sheet给出的占空比=(ccpr1:ccp1con&lt;5:4&gt;)</em>Tosc*Tmr2预分频值，是正脉冲的时间，正确的占空比是个比值，由上公式算出ccpr1l/pr2接近于正确占空比。</h2><p>异步通信<br>空闲一直是高电平，起始位是一个低位，结束位是两个高电平。一个字节先发送低四位，低电平是0，高电平是1。<br>接收到规定的数据位个数和校验位后,通信接口电路希望收到停止位S(逻辑1)，若此时未收到逻辑1，说明出现了错误，在状态寄存器中置“帧错误”标志，有时波特率不对会产生帧错误。<br>代码说明<br>sfr 特殊功能寄存器的声明<br>sft16 sfr的16位数据声明<br>sbit 特殊功能位声明<br>bit 位变量声明</p>
+<p>#define uint unsigned int<br>如：sfr SCON=0X98<br>    sbit OV=PSW^2 //OV取PSW寄存器的第二位<br>中断服务程序<br>函数名() interrupt n using m<br>{<br>    …………<br>}<br>I/O口定义<br>sbit beep=p2^3;//P1^0 串口1的第一个引脚，<br>P1=0xfd;//总线型操作方式<br>对寄存器赋值A大于可以表示的极限65535，会赋值为A%65535<br>main函数跑完后，自动从头跑(默认，手册中并无此说明，最好用循环控制其运行分支)；可以使用while(1);让程序停止在某一处<br>51单片机，上电后所有输出默认为高电平</p>
+<p>下载程序有两种方式:hex文件和bin文件，前者是后者的简短表示，二者一样；keil只生成hex,伟福软件同时生成二者</p>
+<h2 id="单片机网站很多可以申请免费样品，如美信"><a href="#单片机网站很多可以申请免费样品，如美信" class="headerlink" title="单片机网站很多可以申请免费样品，如美信 "></a>单片机网站很多可以申请免费样品，如美信 </h2><p>单片机知识<br>1.电源 2.晶振 3.复位电路<br>对单片机任意I/O口的随意操作(输出电平高低，检测输入电平高低)<br>定时器 中断(外部中断，定时器中断，串口中断) 串口通信(单片机之间，单片机与计算机之间)</p>
+<h2 id="实验芯片DS12C887"><a href="#实验芯片DS12C887" class="headerlink" title="实验芯片DS12C887"></a>实验芯片DS12C887</h2><p>示例代码<br>sbit p1_1=P1^0;<br>unsighed int a;<br>void main()<br>{<br>    while(1)<br>    {<br>        a=50000;<br>        p1_1=0;//低电平二极管会亮，此程序为控制二极管闪烁<br>        while(a–);<br>        a=50000;<br>        p1_1=1;<br>        while(a–);<br>    }<br>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/来自手机_大学教授 权力导致腐败/" rel="next" title="大学教授 权力导致腐败">
+                <i class="fa fa-chevron-left"></i> 大学教授 权力导致腐败
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/技术_汇编语言命名规则举例/" rel="prev" title="汇编语言命名规则举例">
+                汇编语言命名规则举例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘继超</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">201</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#18f452，pwm周期-pr2-1-4ToscTmr2预分频值，data-sheet给出的占空比-ccpr1-ccp1con-lt-5-4-gt-Tosc-Tmr2预分频值，是正脉冲的时间，正确的占空比是个比值，由上公式算出ccpr1l-pr2接近于正确占空比。"><span class="nav-number">1.</span> <span class="nav-text">18f452，pwm周期=(pr2+1)4ToscTmr2预分频值，data sheet给出的占空比=(ccpr1:ccp1con&lt;5:4&gt;)Tosc*Tmr2预分频值，是正脉冲的时间，正确的占空比是个比值，由上公式算出ccpr1l/pr2接近于正确占空比。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单片机网站很多可以申请免费样品，如美信"><span class="nav-number">2.</span> <span class="nav-text">单片机网站很多可以申请免费样品，如美信 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验芯片DS12C887"><span class="nav-number">3.</span> <span class="nav-text">实验芯片DS12C887</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘继超</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

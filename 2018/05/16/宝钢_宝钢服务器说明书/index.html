@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="微信开发者APPID ：wx105801891b8a3532  APPSECRET:07aeff2c8fef112eeec9c5a7355a57e7防火墙443端口映射到本机8080，申请域名解析10小时生效专线设置 测试专线是否连通，就用笔记本配上IP：10.43.113.46，mask：255.255.255.252，ping 10.43.113.45，是否能通就行了。装修弱电网络 电话接口提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宝钢服务器说明书">
+<meta property="og:url" content="https://chaochao670.github.io/2018/05/16/宝钢_宝钢服务器说明书/index.html">
+<meta property="og:site_name" content="超人的hexo小站">
+<meta property="og:description" content="微信开发者APPID ：wx105801891b8a3532  APPSECRET:07aeff2c8fef112eeec9c5a7355a57e7防火墙443端口映射到本机8080，申请域名解析10小时生效专线设置 测试专线是否连通，就用笔记本配上IP：10.43.113.46，mask：255.255.255.252，ping 10.43.113.45，是否能通就行了。装修弱电网络 电话接口提">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-16T12:24:36.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="宝钢服务器说明书">
+<meta name="twitter:description" content="微信开发者APPID ：wx105801891b8a3532  APPSECRET:07aeff2c8fef112eeec9c5a7355a57e7防火墙443端口映射到本机8080，申请域名解析10小时生效专线设置 测试专线是否连通，就用笔记本配上IP：10.43.113.46，mask：255.255.255.252，ping 10.43.113.45，是否能通就行了。装修弱电网络 电话接口提">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chaochao670.github.io/2018/05/16/宝钢_宝钢服务器说明书/"/>
+
+
+
+
+
+  <title>宝钢服务器说明书 | 超人的hexo小站</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">超人的hexo小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-相册">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-目录">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chaochao670.github.io/2018/05/16/宝钢_宝钢服务器说明书/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘继超">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超人的hexo小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">宝钢服务器说明书</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:24:36+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/宝钢/" itemprop="url" rel="index">
+                    <span itemprop="name">宝钢</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>微信开发者<br>APPID ：wx105801891b8a3532  APPSECRET:07aeff2c8fef112eeec9c5a7355a57e7<br>防火墙443端口映射到本机8080，申请域名解析10小时生效<br>专线设置 测试专线是否连通，就用笔记本配上IP：10.43.113.46，mask：255.255.255.252，ping 10.43.113.45，是否能通就行了。<br>装修弱电网络 电话接口提前放好线，会议室投影仪空中安放，网线与办公桌相连，视频会议选定合适的位置。<br>深信服，系统诊断，命令控制台 在防火墙上用telnet看远程机器是否通</p>
+<p>LED屏幕格式MP4， 分辨率512<em>352尺寸，密码168，管理 LED屏幕设置，接收卡R-JC<br>停电后的工作，机房断电开启后需要开启吃饭服务程序，登陆监控桌面启动监控程序<br>公司 19台交换机，10台24口POE交换机，1台核心交换机，4台24口交换机，3台48口光交换机，1台48口电交换机<br>监控服务器(一年半) 10.43.75.219 10.43.71.99 admin low 可在浏览器IP地址直接访问<br>新增七处监控服务器 10.43.71.58 10.43.75.218 门卫 menwei 12345678a 服务器 admin 1234567890a<br>10.43.75.215 216 217<br>10.43.71.51 52 53 54<br>门禁系统软件 售饭 考勤 系统 12021 功能 卡消费类型 扩展消费类型 吃饭的时候实时数据收集程序不能关闭 消费帐户-&gt;交易明细 密码 8888<br>开卡后 关闭实时 同步至读卡器 打开实时公司资料开卡后 开户<br>改权限：左上角基础资料 工具 改权限 销户 F11 回收卡 开卡 终端机开户资料传至读卡器<br>岗亭设置<br>北门：电脑 10.43.71.103 摄像头 10.43.71.245 10.43.71.246 车辆进出 10.43.71.241 10.43.71.242<br>南门： 电脑 10.43.71.104 摄像头 10.43.71.212 10.43.71.252 车辆进出 10.43.71.243 10.43.71.244<br>驱动器映射 net use </em> \10.43.75.245\河南宝钢公共盘 /savecred /persistent:yes<br>此ip地址不能有凭据管理器的用户设置（xp中为用户设置，管理我的网络密码），如果没有设置过会显示密码或用户名在公共盘上无效，提示输入新的用户名。如果直接在凭据里设置，则设置为服务器名 右斜杠 用户名<br>无法保存打印机设置错误0x000006d9，右键计算机，管理，服务和应用程序，服务 windows firewall，自动启用，启动；同时解决了防火墙无法编辑的问题<br>CAD 2015 序列号 Serial No: 558-05677(250minus10) Product key: 001G1 order No: 7054776800/30<br>从控制面板 WINDOWS组件里安装IIS服务<br>从控制面板 管理工具 INTERNET服务里进入IIS管理<br>电视分辨率 1920<em>1080<br>在默认FTP服务器的属性的主目录选项下勾选写入权限<br>武汉服务器 10.43.109.23<br>堆码机监控摄像头 10.43.75.251 admin admin12345<br>裹包机监控摄像头 10.43.75.252 admin admin12345<br>销售电脑固定IP 10.43.75.244<br>彩印照相机 IP 10.43.75.220<br>佳能928打印机 10.43.75.249<br>arp -a 10.43.75.245 根据IP地址查看MAC地址<br>视频会议远程服务器 10.43.8.104(宝翼发出) 10.43.69.251(金属发出)<br>宝钢服务器 SQL SERVER 2008 数据库帐户 sa Qis2000，system文件夹下有两个单独文件为数据库连接配置，如果丢失需要重新配置数据库 载入驱动-&gt;数据库用户名与密码 数据库名称 -&gt;刷新-&gt;连接-&gt;填写连接名称 保存（只有连接成功后才能保存）<br>准备一根交叉搜索线(连路由器) 一根直通线(连交换机) 如果只有一根线也行 现在的设备都能用 把网线的一头插在电脑的网卡接口上 一头插在设备的配置口上 然后 开始–附件–通讯–超级终端 然后要填区号 随便填 确定后出现新建连接 输入名字 随便填 然后确定 接口选COM1 端口属性点还原为默认值 确定 然后回车 直到出现设备型号 然后配置命令网上找<br>一卡通 入口 出口 控制器 共两个IP 摄像头两个IP<br>宝钢域服务器 文件夹C:\Windows\NTDS<br>开机自动登陆  control userpasswords2 去掉要使用此台计算机需要登陆密码<br>普力印N7000打印机，接入前置USB，打印时上拉压纸杆，旋动旋扭将纸分界线置于水平线下三个孔的位置，打印时在NC里将纸张设为宽24.02 高14cm<br>仓库HP1005网络打印机 10.43.75.231<br>综合部东芝256打印机 10.43.75.232<br>综合部 刘莎莎电脑  10.43.75.233<br>公司FTP服务器地址 high<br>视频会议本地固定IP设置 10.43.75.253<br>工厂部无线路由IP地址 10.43.75.235<br>监控服务器 10.43.75.238 10.43.71.50 Administrator dAI85521927  c盘30G，D盘29.9T，12块硬盘一块做校验不存储数据，容量只有11块硬盘<br>    开机运行监控 root pass<br>办公室无线路由IP地址 10.43.75.236<br>10.43.75.247 综合部彩色打印机<br>一卡通服务器IP地址 10.43.75.239 10.43.71.102 宝 low<br>生产线三处IP 10.43.75.242 10.43.75.243 10.43.75.244<br>允许远程配置的IP地址 0 DNS 223.5.5.5 10.250.243.10<br>中国移动公网地址 120.194.218.180<br>掩码 255.255.255.224<br>网关 120.194.218.161<br>自动获取IP的DNS  211.138.24.66 10.250.243.10<br>视频会议 <a href="http://meeting.baosteelmetal.com/" target="_blank" rel="noopener">http://meeting.baosteelmetal.com/</a><br>宝钢正版软件网址<br>宝钢邮箱登陆地址<br>新员工入职后，个人信息由人事录入EHR后拥有唯一工号，24小时后登陆 bca.baogang.info<br>machine/software/policies/microsoft/windows/windowsUpdate 删除后即可关闭电脑的自动更新，删除下面的AU文件夹，从不自动检测是否需要更新<br>power/power setting里的ActivePowerScheme重命名或删除就可以修改电源策略了<br>显示所有IP地址绑定 show ip dhcp binding<br>SPC安装显示无效的OLE2.DLL映像 运行 输入cmd 回车在命令提示符下输入 for %1 in (%windir%\system32\</em>.dll) do regsvr32.exe /s %1 这个命令你慢慢输 输入正确的话会看到飞快地滚屏 再次尝试是否成功</p>
+<p>思科交换机配置完成后输入 wr，保存配置命令，否则本次保存仅在下次重启时候生效<br>更改DNS地址<br>en<br>conf<br>ip dhcp pool office<br>dns-server 10.43.68.250 211.138.24.66<br>门禁<br>编号 SN                 IP地址 位置<br>1 123157367 113         装车平台<br>2 123157375 116         仓库领料<br>3 123157384 115         输送带<br>4 123157482 117         财务室<br>5 123157505 112         发货区<br>6 123157512 108         辅房<br>7 123157590         楼梯间<br>8 123101743 119         摆闸进、出<br>9 123157566         吃饭通道<br>10 123157540 106         仓库出口<br>11 123157548 105         油墨间<br>12 123157473 110         高压配电室<br>13 123157576 111         低压配电室<br>14 123157376         废铝间<br>15 123157591 114         工业垃圾棚<br> 考勤机 120<br> 售饭机1 121<br> 售饭机2 122  消费设置正常时显示，P3 0.00<br>车辆读卡箱内交换机，一入五出（人员出入，车辆入，车辆出，摄像入，摄像出），停电后接入顺序为245，246，242，119，241，一齐接入不行，按顺序接入，最后一个接入不行先拔出，稍等再接入（怀疑共振时序有问题，一齐接入无法使用），如果设备失效，把接入交换机的网线单独接入笔记本，挨个PING通再接入交换机。<br>门禁考勤使用方法：设置最早上班时间，上班时间和下班时间，全选所有门提取记录，生成报表<br>禁止玩游戏策略 用户与策略管理-&gt;上网策略-&gt;新增-&gt;应用（名字 关联default所有用户）<br>电脑修改路由表，在WIN7下需要以管理员权限运行命令行<br>route ADD 10.43.0.0 MASK 255.255.0.0 10.43.75.1 METRIC 20 IF 11(网卡接口编号需要根据route print内容修改) -p<br>route ADD 10.43.0.0 MASK 255.255.0.0 10.43.75.1 METRIC 20 IF 11 -p<br>route delete 0.0.0.0 -p<br>恢复<br>route ADD 0.0.0.0 MASK 0.0.0.0 10.43.75.1 METRIC 20 IF 11 -p<br>route delete 10.43.0.0 -p<br>办公空闲IP地址<br>10.43.75.229 230 234 237 240 242 243 246 248 252<br>NAT端口映射</p>
+<p>正常情况telnet防火墙的端口是不通的，开放NAT后才可以TELNET通，测试IP的端口是否通 telnet 10.43.75.220 5800，通了会显示黑界面，不通会显示连接失败，通了的话用ctrl+]进行命令行，用quit退出<br>搭建DNS服务器<br>server2008R2“开始”–“程序”–“管理工具”–“服务器管理器”<br>添加角色 DNS服务器<br>正向查找区域，新建区域<br>新建主机</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/宝钢_查看正版win 7操作系统/" rel="next" title="查看正版win 7操作系统">
+                <i class="fa fa-chevron-left"></i> 查看正版win 7操作系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/宝钢_厂区固定资产维护记录/" rel="prev" title="厂区固定资产维护记录">
+                厂区固定资产维护记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘继超</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">201</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘继超</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

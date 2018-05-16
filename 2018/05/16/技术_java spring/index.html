@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="tomcat中spring作为listener配置运行，在tomcat中加载顺序为context-param-&amp;gt;listener -&amp;gt; filter -&amp;gt; servlet1.在lib中放入spring包、hibernate包、common-logging,dbcp,pool2,collection包2.jdbc.properties放在classes文件夹下，spring的初始化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java spring">
+<meta property="og:url" content="https://chaochao670.github.io/2018/05/16/技术_java spring/index.html">
+<meta property="og:site_name" content="超人的hexo小站">
+<meta property="og:description" content="tomcat中spring作为listener配置运行，在tomcat中加载顺序为context-param-&amp;gt;listener -&amp;gt; filter -&amp;gt; servlet1.在lib中放入spring包、hibernate包、common-logging,dbcp,pool2,collection包2.jdbc.properties放在classes文件夹下，spring的初始化">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-16T12:24:36.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java spring">
+<meta name="twitter:description" content="tomcat中spring作为listener配置运行，在tomcat中加载顺序为context-param-&amp;gt;listener -&amp;gt; filter -&amp;gt; servlet1.在lib中放入spring包、hibernate包、common-logging,dbcp,pool2,collection包2.jdbc.properties放在classes文件夹下，spring的初始化">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chaochao670.github.io/2018/05/16/技术_java spring/"/>
+
+
+
+
+
+  <title>java spring | 超人的hexo小站</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">超人的hexo小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-相册">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-目录">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chaochao670.github.io/2018/05/16/技术_java spring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘继超">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超人的hexo小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java spring</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:24:36+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>tomcat中spring作为listener配置运行，在tomcat中加载顺序为context-param-&gt;listener -&gt; filter -&gt; servlet<br>1.在lib中放入spring包、hibernate包、common-logging,dbcp,pool2,collection包<br>2.jdbc.properties放在classes文件夹下，spring的初始化文件beans.xml放在WEB-INF下，spring的初始化文件配置结构如下</p>
+<p>context-param加载程序运行时需要的初始化参数<br>加载spring是通过配置listener加载spring容器<br>    <listener><br>        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class><br>        <!-- default: /WEB-INF/applicationContext.xml --><br>    </listener><br>        <!--contextConfigLocation在 ContextLoaderListener类中的默认值是 /WEB-INF/applicationContext.xml  --><br>    <context-param><br>        <param-name>contextConfigLocation</param-name><br>        <param-value>classpath:beans.xml</param-value><br>    </context-param><br>加载spring MVC控制器是用servlet，根据servlet的名字和约定，会自动加载annomvc-servlet.xml</p>
+<p><servlet></servlet></p>
+<p><servlet-name>annomvc</servlet-name></p>
+<p><servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class></p>
+<p><load-on-startup>2</load-on-startup><br></p>
+<p><servlet-mapping></servlet-mapping></p>
+<p><servlet-name>annomvc</servlet-name></p>
+<p><url-pattern>*.do</url-pattern><br><br>1.最原始版不使用spring是用BeanFactory，此factory实际上是org.jdom.Document读取配置文件:beans.xml，从root获取beans，遍历每个已经配置的bean,如果bean下配置的有需要装配的协同工作的类成员变量，则通过协同类变量名如userdao获得setUserdao方法，调用此bean的此方法，beans下其它配置好的bean装配好这个bean，自此spring自动装配完毕，使用时，BeanFactory通过getBean可以获取到任何一个装配好的Bean,不需要手动new对象直接从Factory里取出装配好的就可以使用了。<br>2.使用spring通过xml文件装配，导入包<br>import org.springframework.context.ApplicationContext;<br>import org.springframework.context.support.ClassPathXmlApplicationContext;<br>通过 ApplicationContext ctx = new ClassPathXmlApplicationContext(“beans.xml”) 使得ctx作为一个BeanFactory，直接从Factory里GetBean就可以获取到spring框架自动装配好的每一个bean对象，beans.xml中的配置添加如下属性<br> <bean id="userService" class="service.UserService" scope="prototype" autowire="byType"></bean><br>spring 默认scope 是单例模式(singleton) 这样只会创建一个Action对象 每次访问都是同一个Action对象，数据不安全 struts2 是要求 每次次访问 都对应不同的Action scope=”prototype” 可以保证 当有请求的时候 都创建一个新的Action对象,byType表示装配类成员变量时，通过类型寻找此类型的一个且仅有一个的bean<br>3.spring通过注解自动装配，beans.xml里不配置应该装配哪个bean<br> <bean id="userService" class="com.bjsxt.service.UserService"></bean><br>在源码协同的类成员变量的set方法上指定应该装配哪个bean，Autowired属于spring默认按类型装配<br>@Autowired<br>public void setUserDAO(@Qualifier(“u”) UserDAO userDAO) //指定beans.xml中id为u的UserDao自动装配<br>4.beans.xml不再指定bean的名称和id,名称和id通过注解写入源码，Resource属于j2ee默认安照名称进行装配<br>beans.xml仅配置<br>&lt;context:annotation-config /&gt;<br>&lt;context:component-scan base-package=”com.bjsxt”/&gt;<br>自动装配包com.bjsxt下的所有注解bean,源码中通过<br>@Component(“userService”) 写在类定义前，指定此类应该装配的bean的id<br>@Resource(name=”u”) 写在协同类的set方法前，指定应该注入的协同成员类的id，如果声明的时候使用Resource不加name，意义为注入此名称的类变量如：<br>@Resource<br>private DataSource dataSource; // 注入一个bean，名称为’dataSource’<br>AOP面向切面编程<br>1.手动动态代理机制,重点需要两个包<br>import java.lang.reflect.Proxy;<br>import java.lang.reflect.InvocationHandler;<br>先实现InvocationHandler接口，如日志录入类</p>
+<p>public class LogInterceptor implements InvocationHandler{<br>private Object target;<br>    public Object getTarget() {<br>        return target;<br>    }<br>        public void setTarget(Object target) {<br>        this.target = target;<br>    }<br>        public void beforeMethod(Method m) {</p>
+<pre><code>    System.out.println(&quot;beforeMetho-&gt;&quot;+m.getName() + &quot; start&quot;);
+}
+    public Object invoke(Object proxy, Method m, Object[] args)
+        throws Throwable {
+    beforeMethod(m);
+    m.invoke(target, args);
+    return null;
+}
+</code></pre><p>使用反射的Proxy类动态代理生成对象，可以在方法前后织入想要的日志录入操作</p>
+<p>UserDAO userDAO = new UserDAOImpl();//对于UserDAOImpl的实现过程进行织入<br>        LogInterceptor li = new LogInterceptor();<br>        li.setTarget(userDAO);//设置需要被织入的类对象<br>        UserDAO userDAOProxy = (UserDAO)Proxy.newProxyInstance(userDAO.getClass().getClassLoader(), userDAO.getClass().getInterfaces(), li);<br>        System.out.println(userDAOProxy.getClass());//动态对象的类名为 $Proxy0，通过 Proxy.newProxyInstance 创建的代理对象是在jvm运行时动态生成的一个对象，不是我们的InvocationHandler类型，也不是我们定义的那组接口的类型，而是在运行是动态生成的一个对象，并且命名方式都是这样的形式，以$开头，proxy为中，最后一个数字表示对象的标号。<br>        userDAOProxy.delete();<br>        userDAOProxy.save(new User());//不论使用delete还是save方法，都会通过LogInterceptor的invoke方法来间接调用欲调用的delete或者save方法，就可以通过在beforeMethod中织入一些方法达到织入效果</p>
+<p>2.进阶版不用显式地装配代理，在beans.xml中配置为动态代理</p>
+<p>&lt;context:annotation-config /&gt;<br>&lt;context:component-scan base-package=”com.bjsxt”/&gt;<br> &lt;aop:aspectj-autoproxy /&gt;<br>然后LogIntercepter可以以注解的方式实现接口，指定欲织入的方法<br>import org.aspectj.lang.ProceedingJoinPoint;<br>import org.aspectj.lang.annotation.Around;<br>import org.aspectj.lang.annotation.Aspect;<br>import org.aspectj.lang.annotation.Before;<br>import org.aspectj.lang.annotation.Pointcut;<br>import org.springframework.stereotype.Component;</p>
+<p>@Aspect<br>@Component<br>public class LogInterceptor {<br>    @Pointcut(“execution(public <em> com.bjsxt.service..</em>.add(..))”)<br>    public void myMethod(){<br>        System.out.println(“myMethod excecution—-&gt;”);</p>
+<pre><code>};
+
+@Before(&quot;myMethod()&quot;)
+public void before() {
+    System.out.println(&quot;method before-------&gt;&quot;);
+}
+
+@Around(&quot;myMethod()&quot;)
+public void aroundMethod(ProceedingJoinPoint pjp) throws Throwable {
+    System.out.println(&quot;method around start&quot;);
+    pjp.proceed();
+    System.out.println(&quot;method around end&quot;);
+}
+</code></pre><p>}</p>
+<p>加载beans.xml后，获得通过注解标记的service类对象，调用方法<br>System.out.println(service.getClass());<br>service.add(new User(“zhangSan”));<br>输出结果如下<br>method around start<br>method before——-&gt;<br>user saved!-&gt;zhangSan<br>method around end<br>3.注解的可读性差，可以通过配置文件beans.xml设置切入点</p>
+<bean id="logInterceptor" class="com.bjsxt.aop.LogInterceptor"></bean><br><a href="aop:config" target="_blank" rel="noopener">aop:config</a><br>&lt;aop:aspect id=”logAspect” ref=”logInterceptor”&gt;<br>&lt;aop:before method=”before” pointcut=”execution(public <em> com.bjsxt.service..</em>.add(..))” /&gt;<br>&lt;/aop:aspect&gt;<br>&lt;/aop:config&gt;<br>配置切入点为执行指定类的add方法时，采用before织入方法，使用spring装配好的对象的add方法法，会自动触发before方法<br>UserService service = (UserService)ctx.getBean(“userService”);<br>        System.out.println(service.getClass());<br>        service.add(new User());<br><br>输出<br> [java] class com.bjsxt.service.UserService$$EnhancerByCGLIB$$49066725<br> [java] method before<br> [java] user saved!<br><br>数据库连接<br>在DaoImpl里引用SessionFacotyr包import org.hibernate.SessionFactory;用Resource激活一个命名资源的依赖注入<br>@Resource<br>public void setSessionFactory(SessionFactory sessionFactory) {<br>this.sessionFactory = sessionFactory;<br>}<br>在beans.xml里配置该命名资源的装配类，数据源类<br><br><bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"><br><property name="locations"><br><value>classpath:jdbc.properties</value><br></property><br></bean>   <!--加载数据库连接文件--><br><br><bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"><br>        <property name="dataSource" ref="dataSource"><br>        <property name="annotatedClasses"><br>            <list><br>                <value>com.bjsxt.model.User</value><br>            </list><br>        </property><br>        <property name="hibernateProperties"><br>            <props><br>                <prop key="hibernate.dialect"><br>                    org.hibernate.dialect.MySQLDialect<br>                </prop><br>                <prop key="hibernate.show_sql">true</prop><br>            </props><br>        </property><br>    </property></bean>
+
+<p>DaoImpl就可以通过SessionFactory获得Session操作数据库了</p>
+<p>Session s = sessionFactory.openSession();<br>            s.beginTransaction();<br>            s.save(user);<br>            s.getTransaction().commit();<br>缺点是每一个Impl里都得有一个SessionFactory造成资源浪费<br>事务管理<br>在使用session.beginTransaction()和tx.commit()的时候是使用了hibernate的API,代码和hibernate耦合。如果日后想用JTA或JPA来代替hibernate做持久化工作，你会发现这是一项艰巨的任务——太多代码要改了，几乎要把session.beginTransaction()或tx.commit()的代码都改掉。如果使用了spring的事务控制，就不再需要在代码中使用hibernate的API了，同样是用JTA或JPA来代替hibernate，只需要修改spring的配置文件就可以替换了持久层框架。这就是spring的魅力所在。当然你可能说“hibernate工作好好的，我为什么要替换持久层框架？”。这个问题很难回答，要套用一句俗语来回答就是：“无论多微小的概率，只要有机会发生的事，就肯定会发生！”当有一天因为hibernate出现不能解决的BUG，或者第三方数据库没有提供jdbc支持而你又必须使用，这时候就有必要替换hibernate了。话说回来，如果你确信自己不会替换hibernate，这样要不要和spring整合都是没所谓的，只是你没有遵从目前的最佳实践罢了。上面的写法与hibernate是耦合的，每次执行数据库操作前 1.开启实务-&gt;执行语句-&gt;try catch&gt;异常 出现异常回滚事务 完毕后还要关闭事务<br>如果使用Spring,就不需要知道事务这回事了。声明式配置后,自动开启事务,出现运行时异常自动回滚，自动提交。使用事务管理，在代码中不再显式地开启和提交事务，由spring完成事务管理，在配置文件中声明使用注释性事务</p>
+<pre><code>&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot;&gt;
+    &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot; /&gt;
+&lt;/bean&gt;
+
+&lt;tx:annotation-driven transaction-manager=&quot;txManager&quot;/&gt;
+</code></pre><p>将数据库操作的部分去掉事务部分，仅编写</p>
+<p>Session s = sessionFactory.getCurrentSession();</p>
+<pre><code>s.save(user);            
+</code></pre><p>即可，在需要事务管理的方法上用注解声明事务</p>
+<pre><code>@Transactional(readOnly=false)
+public void add(User user) {
+        userDAO.save(user);
+</code></pre><p>即可实现事务管理，还可以使用JPA等其它事务管理器，详见 </p>
+<p>除了使用编程式事务管理还可以使用声明式事务管理<br>声明式事务管理在配置文件中编写tx:advice设置需要事务管理的方法，在方法上不需要再编辑@transanctional,需要设置五个参数<br>传播行为 隔离级别 只读提示 事务超时时间 回滚规则<br>1.当一个事务方法被另一个事务调用的时候，必须设置事务传播规则。在现有事务中运行或者开启一个新的事务。<br>PROPAGATION_REQUIRED– 如果当前没有事务，就新建一个事务。这是最常见的选择。<br>PROPAGATION_SUPPORTS– 如果当前没有事务，就以非事务方式执行。<br>PROPAGATION_MANDATORY– 如果当前没有事务，就抛出异常。<br>PROPAGATION_REQUIRES_NEW–新建事务，如果当前存在事务，把当前事务挂起。<br>PROPAGATION_NOT_SUPPORTED–以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。<br>PROPAGATION_NEVER–以非事务方式执行，如果当前存在事务，则抛出异常。<br>隔离级别是一个事务能够接受其它并发事务的程度，防止脏读，不可重复读，幻读等。<br>ISOLATION_DEFAULT： 这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别. 另外四个与JDBC的隔离级别相对应<br>ISOLATION_READ_UNCOMMITTED： 这是事务最低的隔离级别，它充许令外一个事务可以看到这个事务未提交的数据。 这种隔离级别会产生脏读，不可重复读和幻像读。<br>ISOLATION_READ_COMMITTED： 保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据<br>ISOLATION_REPEATABLE_READ： 这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。 它除了保证一个事务不能读取另一个事务未提交的数据外，还保证了避免下面的情况产生(不可重复读)。<br>ISOLATION_SERIALIZABLE 这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。 除了防止脏读，不可重复读外，还避免了幻像读。<br>只读事务并不是一个强制选项，它只是一个“暗示”，提示数据库驱动程序和数据库系统，这个事务并不包含更改数据的操作，那么JDBC驱动程序和数据库就有可能根据这种情况对该事务进行一些特定的优化，比方说不安排相应的数据库锁，以减轻事务对数据库的压力<br>回滚规则，默认情况下，事务只有在遇到运行期异常时才会回滚，而在遇到检查型异常时不会回滚，但是也可以声明事务在遇到特定的检查型异常时像遇到运行期异常那样回滚。同样，你还可以声明事务遇到特定的异常不回滚，</p>
+<p>注解<br>@Autowired属于Spring,装配的依赖对象必须存在 ，@Resource激活一个命名资源的依赖注入，属于J2EE，如果没有标明变量名则根据类型注入<br>@Repository用于标注数据访问组件，即DAO组件； 例: @Repository public class VentorDaoImpl implements iVentorDao { } 在一个稍大的项目中，如果组件采用xml的bean定义来配置，显然会增加配置文件的体积，查找以及维护起来也不太方便。<br>@PersistenceContext是由一组受托管的实体对象实例所构成的集合。它受entity manager 的管理。Entity manager追踪persistence context中所有对象的修改和更新情况，并根据指定的flush模式（本章稍后会做讨论）将这些修改保存到数据库中。一旦persistence context被关闭，所有实体对象实例都会脱离EntityManager而成为非托管对象。对象一旦从persistence context中脱离，就不再受entity manager管理了，任何对此对象的状态变更也将不会被同步到数据库。<br>@Entity注解实体的ORM后在SPRING中用annotatedClasses一一列出需要spring对应数据库的实体类，或者用packagesToScan指定哪些包下是所有的实体类<br>1800 使用了事务管理<br>1900 配置文件中声明式的事务管理<br>2000 面向切面编程<br>2100 1superDAO使用了继承了获取hibernateTemplate<br>2100 2superDAO使用了spring对hibernateDAO的支持org.springframework.orm.hibernate3.support.HibernateDaoSupport</p>
+<p>删除tomcat 安装过程中报错，fail to install tomcat service,原因是旧的tomcat删除不干净，删除旧版本文件夹并运行查看services.msc中如果有tomcat用指令移除,sc delete Tomcat7<br>myeclipses打开后指向new报错，java was started but returned exit code =1，<br>将myeclipse.ini中修改vm参数为绝对路径，java版本与myeclipse版本必须一致，64位都64位<br>-vm<br>E:9990program filesJAVAjreinjavaw.exe</p>
+<ol>
+<li>安装部署成功后，点击 Manager App登陆应用，<br>2,在server.xml中添加<br><context path="/xproduct" workdir="E:9990program filesTomcat 7.0webappsxproductWebContent" reloadable="true" docbase="E:9990program filesTomcat 7.0webappsxproduct"><br><br>3.在web.xml中修改 listings为true,会以列表显示docBase下面内容</context></li>
+</ol>
+<p>hibernate session delete方法无效，添加 查询有效但是删除无效是因为没有清空提交缓存。<br>baseDao中只有delete,persist调用，没有opensession,commit,rollback函数的调用，因为spring通过事务管理@transactional在需要事务管理的函数前后分别操纵了session的打开、提交和关闭。spring会自动寻找使用@Transactional注解的Bean.要实现事务管理首先它要是个bean(必须是个类而不是一个接口),再次该bean的方法要被transactional注解(通过继承被@transactional注解的baseService实现)。<br>要通过注入class UserDaoImpl{super(User.class)}的成员变量来达到能操纵数据库的get,delete等函数；再通过继承BaseSerivice(拥有@transactional)的方法来获得事务管理。<br>control里通过注入userservice接口一个userserviceimpl对象来获得对user的操纵能力，只能通过service里拥有的接口来查询而不是basedao中的函数来操纵数据库。<br>impl函数public class UserServiceImpl extends BaseService<user> implements UserService<br>中，通过implements userservice间接继承了service,拥有了查询第几页等方法，通过extends baseservice实现了查询第几页等方法。</user></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/技术_eclipse导入已有项目/" rel="next" title="eclipse导入已有项目">
+                <i class="fa fa-chevron-left"></i> eclipse导入已有项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/技术_java笔记/" rel="prev" title="java笔记">
+                java笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘继超</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">201</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘继超</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
